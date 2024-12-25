@@ -10,7 +10,7 @@ import tool.Misc;
 public class DemoPanel extends JPanel {
 
 	// READ MAP
-	String fileName = "inputs/map2.txt";
+	String fileName = "inputs/map1.txt";
 	String[][] map = Misc.fileTo2DArray(fileName);
 	
 	// SCREEN SETTINGS
