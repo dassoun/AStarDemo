@@ -25,6 +25,9 @@ public class KeyHandler implements KeyListener {
 		if (code == KeyEvent.VK_SPACE) {
 			dp.search();
 		}
+		if (code == KeyEvent.VK_ESCAPE) {
+			System.exit(0);
+		}
 	}
 
 	@Override

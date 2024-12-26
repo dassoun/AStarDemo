@@ -211,6 +211,20 @@ public class DemoPanel extends JPanel {
 			node.setAsOpen();
 			node.parent = currentNode;
 			openList.add(node);
+			
+			String fromParent = "";
+			if (node.parent != null) {
+				if (node.parent.col < node.col) {
+					fromParent = ">";
+				} else if (node.parent.col > node.col) {
+					fromParent = "<";
+				} else if (node.parent.row < node.row) {
+					fromParent = "v";
+				} else if (node.parent.row > node.row) {
+					fromParent = "^";
+				}
+				node.setText("<html>F:" + node.fCost + "<br>G:" + node.gCost + "<br>" + fromParent + "</html>");
+			}
 		}
 	}
 	
