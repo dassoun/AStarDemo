@@ -5,24 +5,22 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import tool.Misc;
-
 public class DemoPanel extends JPanel {
 
-	// READ MAP
-	String fileName = "inputs/map1.txt";
-	String[][] map = Misc.fileTo2DArray(fileName);
-	
-	// SCREEN SETTINGS
-	final int MAX_COL = map[0].length;
-	final int MAX_ROW = map.length;
+//	// READ MAP
+//	String fileName = "inputs/map1.txt";
+	String[][] map;
+//	
+//	// SCREEN SETTINGS
+	final int MAX_COL;
+	final int MAX_ROW;
 	final int NODE_SIZE = 60;
-	final int SCREEN_WIDTH = NODE_SIZE * MAX_COL;
-	final int SCREEN_HEIGHT = NODE_SIZE * MAX_ROW;
+	final int SCREEN_WIDTH;
+	final int SCREEN_HEIGHT;
 	final int MAX_STEP = 300;
 	
 	// NODES
-	Node[][] node = new Node[MAX_COL][MAX_ROW];
+	Node[][] node;
 	Node startNode, goalNode, currentNode;
 	ArrayList<Node> openList = new ArrayList<Node>();
 	ArrayList<Node> checkedList = new ArrayList<Node>();
@@ -32,7 +30,14 @@ public class DemoPanel extends JPanel {
 	int step = 0;
 	
 	
-	public DemoPanel() {
+	public DemoPanel(String[][] map) {
+		
+		this.map = map;
+		MAX_COL = map[0].length;;
+		MAX_ROW = map.length;
+		SCREEN_WIDTH = NODE_SIZE * MAX_COL;
+		SCREEN_HEIGHT = NODE_SIZE * MAX_ROW;
+		node = new Node[MAX_COL][MAX_ROW];
 		
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.BLACK);
