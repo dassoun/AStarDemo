@@ -7,11 +7,10 @@ import javax.swing.JPanel;
 
 public class DemoPanel extends JPanel {
 
-//	// READ MAP
-//	String fileName = "inputs/map1.txt";
+	// READ MAP
 	String[][] map;
-//	
-//	// SCREEN SETTINGS
+	
+	// SCREEN SETTINGS
 	final int MAX_COL;
 	final int MAX_ROW;
 	final int NODE_SIZE = 60;
@@ -151,7 +150,7 @@ public class DemoPanel extends JPanel {
 			
 			if (currentNode == goalNode) {
 				goalReached = true;
-				//trackPath();
+				trackPath();
 			}
 		}
 	}

@@ -1,12 +1,6 @@
-import java.io.File;
-import java.util.ArrayList;
-
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 
-public class Main {
+public class AStarDemo {
 
 	public static void main(String[] args) {
 		
@@ -19,6 +13,7 @@ public class Main {
 //		window.add(new DemoPanel());
 		
 		window.pack();
+		window.setSize(400, 300);
 		window.setLocationRelativeTo(null);
 		window.setVisible(true);
 	}

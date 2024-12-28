@@ -8,9 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import javax.swing.event.MenuEvent;
+import javax.swing.KeyStroke;
 
 import tool.Misc;
 
@@ -21,6 +20,7 @@ public class JMenuClickEvent implements ActionListener {
 	JMenu menuMap;
 	ArrayList<JMenuItem> mapItemList;
 	JMenuItem menuItemResolve;
+	JMenuItem menuItemStepByStep;
 	
 	JFrame frame;
 	DemoPanel panel;
@@ -51,11 +51,17 @@ public class JMenuClickEvent implements ActionListener {
         	mi.addActionListener(this);
         }
         
-        menuItemResolve = new JMenuItem("Resolve");
-        menuItemResolve.setMnemonic(KeyEvent.VK_R);
+        menuItemResolve = new JMenuItem("Resolve", KeyEvent.VK_R);
+        KeyStroke ctrlRKeyStroke = KeyStroke.getKeyStroke("control R");
+        menuItemResolve.setAccelerator(ctrlRKeyStroke);
         menuItemResolve.addActionListener(this);
         menuFile.add(menuItemResolve);
         
+        menuItemStepByStep = new JMenuItem("Step by step", KeyEvent.VK_S);
+        KeyStroke ctrlSKeyStroke = KeyStroke.getKeyStroke("control S");
+        menuItemStepByStep.setAccelerator(ctrlSKeyStroke);
+        menuItemStepByStep.addActionListener(this);
+        menuFile.add(menuItemStepByStep);
 	}
 
 	@Override
@@ -81,15 +87,20 @@ public class JMenuClickEvent implements ActionListener {
 				frame.remove(panel);
 			}
 			frame.setSize(max_col * node_size, max_row * node_size);
+			frame.setLocationRelativeTo(null);
 			panel = new DemoPanel(map);
 			frame.add(panel);
 			
-			panel.repaint();
 		} else if (menuItem == menuItemResolve) {
 			if (panel != null) {
 				panel.autoSearch();
 			}
+		} else if (menuItem == menuItemStepByStep) {
+			if (panel != null) {
+				panel.search();
+			}
 		}
+		
 	}
 	
 }
